@@ -66,7 +66,7 @@
                      <div class="col-md-4 status">
                         <h5>$<span id="sub-input">1278</span></h5>
                         <h5>$<span id ="tax">51.12</span></h5>
-                        <h5>$1,278</h5>
+                        <h5>$<span id="total">1329.12</span></h5>
                      </div>
                   </div>
                </div>
@@ -97,24 +97,30 @@
 
    const mobilePlusButton= document.getElementById("mobile-plus");
       mobilePlusButton.addEventListener("click",function(){
+         // mobile input area
          let mobileInput = document.getElementById("mobile-input").value;
          let mobileInputParse = parseFloat(mobileInput);
          document.getElementById("mobile-input").value=mobileInputParse + 1;
-
+         //mobile price area
          let mobilePrice = document.getElementById("mobile-price").innerText;
          let mobilePriceParse = parseFloat(mobilePrice);
          document.getElementById("mobile-price").innerText=mobilePriceParse+1219;
-
+         //mobile sub total area
          let sub = document.getElementById("sub-input").innerText;
          let subParse = parseFloat(sub);
          let subTotal = subParse+1219;
           document.getElementById("sub-input").innerText=subTotal;
-       
+       // mobile tax area
          let tax = document.getElementById("tax").innerText;
          let taxParse = parseFloat(tax);
-         let percentage = (subTotal/100)*4
-     
-         document.getElementById("tax").innerText=percentage;
+         let subPercentage = (subTotal/100)*4
+         document.getElementById("tax").innerText=subPercentage;
+      //mobile total price area
+         let total = document.getElementById("total").innerText;
+         let totalParse = parseFloat(total);
+         let totalPercentage= subPercentage+subTotal;
+         document.getElementById("total").innerText=totalPercentage;
+
 
       })
 
@@ -123,16 +129,29 @@
 
    const mobileMinusButton = document.getElementById("mobile-minus");
       mobileMinusButton.addEventListener("click",function(){
+         //mobile input area
          let mobileInput = document.getElementById("mobile-input").value;
          let mobileInputParse = parseFloat(mobileInput);
          document.getElementById("mobile-input").value=(mobileInputParse -1);
-
-
+         //mobile price area
          let mobilePrice = document.getElementById("mobile-price").innerText;
          let mobilePriceParse = parseFloat(mobilePrice);
          document.getElementById("mobile-price").innerText=mobilePriceParse-1219;
-
-
+         //mobile sub total area
+         let sub = document.getElementById("sub-input").innerText;
+         let subParse = parseFloat(sub);
+         let subTotal = subParse-1219;
+         document.getElementById("sub-input").innerText=subTotal;
+         // mobile tax area
+         let tax = document.getElementById("tax").innerText;
+         let taxParse = parseFloat(tax);
+         let subPercentage = (subTotal/100)*4
+         document.getElementById("tax").innerText=subPercentage;
+        //mobile total price area
+         let total = document.getElementById("total").innerText;
+         let totalParse = parseFloat(total);
+         let totalPercentage= subPercentage+subTotal;
+         document.getElementById("total").innerText=totalPercentage;
       })
 </script>
 

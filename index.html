@@ -44,11 +44,11 @@
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
                            <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <input id="casing-input" type="text" class="form-control text-center" value="1">
+                           <button id="casing-plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$<span id="casing-price">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -153,6 +153,36 @@
          let totalPercentage= subPercentage+subTotal;
          document.getElementById("total").innerText=totalPercentage;
       })
+
+   // casing plus button event handler
+      const casingPlusBtn = document.getElementById("casing-plus");
+         casingPlusBtn.addEventListener("click",function(){
+          // casing input area
+         let casingInput = document.getElementById("casing-input").value;
+         let casingInputParse = parseFloat(casingInput);
+         document.getElementById("casing-input").value=casingInputParse + 1;
+
+         //casing price area
+         let casingPrice = document.getElementById("casing-price").innerText;
+         let casingPriceParse = parseFloat(casingPrice);
+         document.getElementById("casing-price").innerText=casingPriceParse+59;
+         //casing sub total area
+         let casingSub = document.getElementById("sub-input").innerText;
+         let casingSubParse = parseFloat(casingSub);
+         let casingSubTotal = casingSubParse+59;
+         document.getElementById("sub-input").innerText=casingSubTotal;
+       // casing tax area
+         let casingTax = document.getElementById("tax").innerText;
+         let casingTaxParse = parseFloat(tax);
+         let casingSubPercentage = (casingSubTotal/100)*4
+         document.getElementById("tax").innerText=casingSubPercentage;
+         //mobile total price area
+         let casingTotal = document.getElementById("total").innerText;
+         let casingTotalParse = parseFloat(casingTotal);
+         let casingTotalPercentage= casingSubPercentage+casingSubTotal;
+         document.getElementById("total").innerText=casingTotalPercentage;
+
+         })
 </script>
 
 

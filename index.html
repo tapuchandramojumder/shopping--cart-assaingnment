@@ -12,7 +12,7 @@
 
 <body>
 
-   <section>
+   <section id="hidden">
       <div class="container">
          <div class="cart">
             <div class="col-md-12 col-lg-10 mx-auto">
@@ -43,7 +43,7 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <button id="casing-minus" class="btn btn-default"><i class="fas fa-minus"></i></button>
                            <input id="casing-input" type="text" class="form-control text-center" value="1">
                            <button id="casing-plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
@@ -71,27 +71,17 @@
                   </div>
                </div>
                <div class="col-md-12 pt-4 pb-4">
-                  <button type="button" class="btn btn-success check-out">Check Out</button>
+                  <button type="button" id ="check-out" class="btn btn-success check-out">Check Out</button>
                </div>
+
+               
             </div>
          </div>
       </div>
    </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ <div>
+      <h1 id="welcome">Thanks for your purchase</h1>
+</div>
 <script>
    // mobile plus button event handler
 
@@ -183,13 +173,45 @@
          document.getElementById("total").innerText=casingTotalPercentage;
 
          })
+         
+   //casing minus button event handler
+
+   const casingMinusButton = document.getElementById("casing-minus");
+      casingMinusButton.addEventListener("click",function(){
+         //casing input area
+         let casingInput = document.getElementById("casing-input").value;
+         let casingInputParse = parseFloat(casingInput);
+         document.getElementById("casing-input").value=(casingInputParse -1);
+         //casing price area
+         let casingPrice = document.getElementById("casing-price").innerText;
+         let casingPriceParse = parseFloat(casingPrice);
+         document.getElementById("casing-price").innerText=casingPriceParse-59;
+         //casing sub total area
+         let casingSub = document.getElementById("sub-input").innerText;
+         let casingSubParse = parseFloat(casingSub);
+         let casingSubTotal = casingSubParse-59;
+         document.getElementById("sub-input").innerText=casingSubTotal;
+         // casing tax area
+         let tax = document.getElementById("tax").innerText;
+         let taxParse = parseFloat(tax);
+         let subPercentage = (casingSubTotal/100)*4
+         document.getElementById("tax").innerText=subPercentage;
+        //casing total price area
+         let total = document.getElementById("total").innerText;
+         let totalParse = parseFloat(total);
+         let totalPercentage= subPercentage+casingSubTotal;
+         document.getElementById("total").innerText=totalPercentage;
+      })
+
+      const checkoutBtn= document.getElementById("check-out");
+      checkoutBtn.addEventListener("click",function(){
+         const hiddenDisplay=document.getElementById("hidden");
+       hiddenDisplay.style.display="none";
+         const welcomeMsg = document.getElementById("welcome");
+         welcomeMsg.style.display="block"
+         
+      })
 </script>
-
-
-
-
-
-
 
 </body>
 

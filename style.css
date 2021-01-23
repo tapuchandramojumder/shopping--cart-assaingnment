@@ -53,3 +53,9 @@ body{
 	background-color: #2FBE70;
 	border: none;
 }
+#welcome{
+	display:none;
+	color:tomato;
+	margin-top:20%;
+	text-align:center;
+}
